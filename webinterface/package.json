@@ -1,0 +1,25 @@
+{
+  "name": "webinterface",
+  "version": "1.0.0",
+  "description": "a web interface for controling turtles in minecraft from the mod computercraft",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emilurenius/remoteMineTurtle.git"
+  },
+  "author": "Emil Christiansen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Emilurenius/remoteMineTurtle/issues"
+  },
+  "homepage": "https://github.com/Emilurenius/remoteMineTurtle#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
+  }
+}
