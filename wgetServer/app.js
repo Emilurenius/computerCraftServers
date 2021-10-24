@@ -26,7 +26,7 @@ console.log(`${port} registered as server port`)
 
 app.use(cors()) // Making sure the browser can request more data after it is loaded on the client computer.
 
-app.use("/turtlecode", express.static("turtleCode"))
+app.use("/code", express.static("code"))
 
 app.get("/", (req, res) => {
     res.send("Hello world")
