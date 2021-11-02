@@ -4,6 +4,8 @@ const app = express()
 const path = require("path")
 const fs = require("fs")
 const cors = require("cors")
+const upload = require("express-fileupload")
+
 
 function loadJSON(filename) {
     const rawdata = fs.readFileSync(path.join(__dirname, filename))
@@ -25,12 +27,29 @@ console.log(`${port} registered as server port`)
 // Reading input from terminal end
 
 app.use(cors()) // Making sure the browser can request more data after it is loaded on the client computer.
+app.use(upload()) // Fileupload system
+app.use(express.urlencoded({extended:false}))
 
 app.use("/code", express.static("code"))
 
 app.get("/", (req, res) => {
-    res.send("Hello world")
+    res.sendFile(path.join(__dirname, "/html/fileUpload.html"))
 })
+
+app.post("/codeUpload", (req, res) => {
+    const file = req.files.code
+
+    file.mv(path.join(__dirname, `/code/uploaded/${req.body.fileName}.lua`), (err) => {
+        if (err) {
+            res.send(err)
+        }
+        else {
+            res.send(file)
+            console.log(file)
+        }
+    })
+})
+
 
 
 app.listen(port, () => console.log(`Listening on ${port}`))
