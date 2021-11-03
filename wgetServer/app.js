@@ -38,8 +38,9 @@ app.get("/", (req, res) => {
 
 app.post("/codeUpload", (req, res) => {
     const file = req.files.code
+    const filePath = path.join(__dirname, `/code/uploaded/${req.body.fileName}.lua`)
 
-    file.mv(path.join(__dirname, `/code/uploaded/${req.body.fileName}.lua`), (err) => {
+    file.mv(filePath, (err) => {
         if (err) {
             res.send(err)
         }
