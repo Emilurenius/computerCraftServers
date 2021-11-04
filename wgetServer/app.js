@@ -45,7 +45,7 @@ app.post("/codeUpload", (req, res) => {
             res.send(err)
         }
         else {
-            res.send(file)
+            res.send(`Saved ${req.body.fileName} at path : `)
             console.log(file)
         }
     })
